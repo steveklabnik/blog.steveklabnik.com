@@ -1,16 +1,16 @@
 {
-  "name": "blog.steveklabnik.com",
+  "name": "custom-server-express",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "echo \"no build needed\"",
+    "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
