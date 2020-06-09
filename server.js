@@ -10,11 +10,6 @@
 //   { from: '/old-link-2', to: 'https://externalsite.com/new-link-2' },
 // ]
 // 
-// redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
-//   app[method](from, (req, res) => {
-//     res.redirect(type, to)
-//   })
-// })
 // 
 // app.listen(port, err => {
 //   if (err) throw err
@@ -28,6 +23,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const redirects = [
+  { from: '/posts/2009-12-02-about-crows', to: 'https://steveklabnik.com/writing/about-crows' },
+  { from: '/old-link-2', to: 'https://externalsite.com/new-link-2' },
+]
+
 app.prepare().then(() => {
   const server = express()
 
@@ -39,9 +39,16 @@ app.prepare().then(() => {
     return app.render(req, res, '/b', req.query)
   })
 
+  redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
+    server[method](from, (req, res) => {
+      res.redirect(type, to)
+    })
+  })
+
   server.all('*', (req, res) => {
     return handle(req, res)
   })
+
 
   server.listen(port, (err) => {
     if (err) throw err

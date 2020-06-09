@@ -1,6 +1,5 @@
 export default function Home() {
   return (
-    <ul>
-    </ul>
+    <h1>No</h1>
   )
 }
