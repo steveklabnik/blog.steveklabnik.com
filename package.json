@@ -5,15 +5,12 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "echo \"no build needed\"",
     "start": "cross-env NODE_ENV=production node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "next": "^9.4.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "express": "^4.17.1"
   }
 }
